@@ -1,2 +1,2 @@
-# Laravel-for-api-dev
-Laravel-for-api-dev
+# docker-compose-Laravel-dev
+These files are so that I create something in local environment.
