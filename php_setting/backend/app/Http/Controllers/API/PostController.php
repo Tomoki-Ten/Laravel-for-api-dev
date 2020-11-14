@@ -15,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::all();
+        $posts = Post::all();
+        return $posts;
     }
 
     /**
@@ -37,7 +38,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return $post;
     }
 
     /**
@@ -60,6 +62,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        return response('OK',200);
     }
 }
