@@ -18,3 +18,8 @@ services:
     build:
       context: ./mysql_setting
       dockerfile: Dockerfile
+    volumes:
+    - datavolume:/var/lib/mysql
+
+volumes:
+  datavolume: {}
