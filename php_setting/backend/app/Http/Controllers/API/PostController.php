@@ -27,7 +27,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $instance = new Post;
+        $instance->title = $request->title;
+        $instance->post = $request->post;
+        $instance->save();
+        return response()->json(['result'=>'OK','status'=>200]);
     }
 
     /**
@@ -51,7 +55,11 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $instance = Post::find($id);
+        $instance->title = $request->title;
+        $instance->post = $request->post;
+        $instance->save();
+        return response()->json(['result' => 'OK','status' => 200]);
     }
 
     /**
@@ -62,8 +70,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        $post->delete();
-        return response('OK',200);
+        $instance = Post::find($id);
+        $instance->delete();
+        return response()->json(['result' => 'OK', 'status' => 200]);
     }
 }
