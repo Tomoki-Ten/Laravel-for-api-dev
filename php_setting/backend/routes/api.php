@@ -19,9 +19,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('posts',PostController::class);
-// Route::get('/posts',[PostController::class,'index']);
-// Route::post('/posts',[PostController::class,'store']);
-// Route::get('/posts/{post}',[PostController::class,'show']);
-// Route::put('/posts/{post}',[PostController::class,'update']);
-// Route::delete('/posts/{post}',[PostController::class,'destroy']);
+// Route::apiResource('posts',PostController::class);
+Route::get('/v1/posts',[PostController::class,'index'])
+->name('posts.index');
+Route::post('/v1/posts',[PostController::class,'store'])
+->name('posts.store');
+Route::get('/v1/posts/{post}',[PostController::class,'show'])
+->name('posts.show');
+Route::put('/v1/posts/{post}',[PostController::class,'update'])
+->name('posts.update');
+Route::delete('/v1/posts/{post}',[PostController::class,'destroy'])
+->name('posts.destroy');

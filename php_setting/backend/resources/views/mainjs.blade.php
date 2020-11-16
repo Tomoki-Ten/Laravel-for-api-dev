@@ -8,7 +8,7 @@
 
   // GET
   async function getData(){
-    const response = await fetch('/api/posts')
+    const response = await fetch('/api/v1/posts')
     const data = await response.json();
 
     console.log(data);
@@ -40,7 +40,7 @@
     
     const obj = {title: titleVal,post: postVal};
     
-    fetch('/api/posts', {
+    fetch('/api/v1/posts', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(obj),
@@ -66,7 +66,7 @@
     
     const obj = {title: titleVal,post: postVal};
     
-    fetch('/api/posts/' + id, {
+    fetch('/api/v1/posts/' + id, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(obj),
@@ -85,7 +85,7 @@
     const idForm = document.getElementById('id-form');
     const id = idForm.value;
 
-    fetch('/api/posts/' + id, {
+    fetch('/api/v1/posts/' + id, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
     })
