@@ -30,26 +30,10 @@
     <div>
       <h2>Check all posts!</h2>
       <ul id="listcontainer">
-        <li>
+        <!-- <li>
           <h3>Title</h3>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, dicta itaque quis consectetur expedita nobis. Rerum molestias ipsa aliquid quis?</p>
-        </li>
-        <li>
-          <h3>Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, dicta itaque quis consectetur expedita nobis. Rerum molestias ipsa aliquid quis?</p>
-        </li>
-        <li>
-          <h3>Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, dicta itaque quis consectetur expedita nobis. Rerum molestias ipsa aliquid quis?</p>
-        </li>
-        <li>
-          <h3>Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, dicta itaque quis consectetur expedita nobis. Rerum molestias ipsa aliquid quis?</p>
-        </li>
-        <li>
-          <h3>Title</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, dicta itaque quis consectetur expedita nobis. Rerum molestias ipsa aliquid quis?</p>
-        </li>
+        </li> -->
       </ul>
     </div>
   </main>

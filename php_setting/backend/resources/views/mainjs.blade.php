@@ -6,7 +6,7 @@
   const deleteBtn = document.getElementById('delete-btn');
 
 
-  // GET
+  // GET as Loading
   async function getData(){
     const response = await fetch('/api/v1/posts')
     const data = await response.json();
@@ -25,10 +25,34 @@
       createList.appendChild(createH3);
       createList.appendChild(createSpan);
       createList.appendChild(createP);
-      listcontainer.appendChild(createList);
+      // listcontainer.appendChild(createList);
+      listcontainer.insertBefore(createList,listcontainer.firstElementChild)
     };
   }
   getData();
+
+  // Cleaner
+  function cleaner(){
+    while(listcontainer.firstChild){
+      listcontainer.removeChild(listcontainer.firstChild);
+    }
+  }
+
+
+  // setInterval(()=> {
+  //   cleaner();
+  //   getData();
+  // },3000);
+
+  // GET as getBtn pushed
+  getBtn.addEventListener('click',(e)=> {
+    console.log(event);
+    console.log(e);
+    console.log(e.target);
+    console.log(e.target.value);
+    cleaner();
+    getData();
+  });
 
 
   // POST
@@ -50,8 +74,14 @@
       console.log('Success:', response);
     })
     .catch((error) => {
-      console.error('Error:',error);
+      console.error('Error:', error);
     });
+
+    titleForm.value = '';
+    postForm.value = '';
+
+    cleaner();
+    getData();
   });
 
 
@@ -78,6 +108,9 @@
     .catch((error) => {
       console.error('Error:', error);
     })
+
+    cleaner();
+    setTimeout(getData,100); //Wait to start fetch loading data to get exact result of data.
   });
 
   // DELETE
@@ -96,8 +129,9 @@
     .catch((error) => {
       console.error('Error:', error);
     })
+
+    cleaner();
+    getData();
   });
 
-
-  
 </script>
