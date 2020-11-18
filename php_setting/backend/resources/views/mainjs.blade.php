@@ -13,7 +13,7 @@
 
     console.log(data);
 
-    const getBtn = document.getElementById('get-btn');
+    // const getBtn = document.getElementById('get-btn');
     for(let i=0; i<data.length; i++){
       const createList = document.createElement('li');
       const createSpan = document.createElement('span');
@@ -174,14 +174,30 @@
   async function searchTitle(postValue){
     const response = await fetch('/api/v1/posts/' + postValue);
     const result = await response.json();
-    console.log(result);
-    // return result;
+
+    for(let i=0; i<result.length; i++){
+      const createList = document.createElement('li');
+      const createH3 = document.createElement('h3');
+      const createSpan = document.createElement('span');
+      const createP = document.createElement('p');
+
+      createH3.textContent = result[i].title;
+      createSpan.textContent = 'id' + result[i].id;
+      createP.textContent = result[i].post;
+
+      createList.appendChild(createH3);
+      createList.appendChild(createSpan);
+      createList.appendChild(createP);
+
+      listcontainer.insertBefore(createList,listcontainer.firstElementChild);
+    }
   }
 
   getBtn.addEventListener('click',()=>{
     const searchForm = document.getElementById('search-form');
     const postValue = searchForm.value;
     cleaner();
+    searchForm.value = '';
     searchTitle(postValue);
   });
 

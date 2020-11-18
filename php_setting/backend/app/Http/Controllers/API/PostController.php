@@ -48,6 +48,7 @@ class PostController extends Controller
 
     public function search($postValue){
         $posts = Post::where('title', 'like', '%' . $postValue . '%')
+            // ->orderBy('id','desc')
             ->get();
         return response()->json($posts);
     }
