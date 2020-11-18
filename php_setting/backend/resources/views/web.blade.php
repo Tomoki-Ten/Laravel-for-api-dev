@@ -17,7 +17,9 @@
       <input type="text" id="title-form"><br>
       <label for="post-form">Post:</label>
       <input type="text" id="post-form"><br>
-      <label for="id-form">Id:</label>
+      <label for="search-form">Search:</label>
+      <input type="text" id="search-form">
+      <label for="id-form">Search.Id:</label>
       <input type="number" id="id-form">
     </div>
     <div>

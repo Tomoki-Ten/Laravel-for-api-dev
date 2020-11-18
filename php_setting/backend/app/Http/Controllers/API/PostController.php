@@ -46,6 +46,14 @@ class PostController extends Controller
         return $post;
     }
 
+    public function search($postValue){
+        $posts = Post::where('title', 'like', '%' . $postValue . '%')
+            ->get();
+        return response()->json($posts);
+    }
+    
+    
+
     /**
      * Update the specified resource in storage.
      *

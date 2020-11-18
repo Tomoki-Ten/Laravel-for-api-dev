@@ -24,8 +24,10 @@ Route::get('/v1/posts',[PostController::class,'index'])
 ->name('posts.index');
 Route::post('/v1/posts',[PostController::class,'store'])
 ->name('posts.store');
-Route::get('/v1/posts/{post}',[PostController::class,'show'])
-->name('posts.show');
+Route::get('/v1/posts/{post}',[PostController::class,'search'])
+->name('posts.search');
+// Route::get('/v1/posts/{post}',[PostController::class,'show'])
+// ->name('posts.show');
 Route::put('/v1/posts/{post}',[PostController::class,'update'])
 ->name('posts.update');
 Route::delete('/v1/posts/{post}',[PostController::class,'destroy'])
