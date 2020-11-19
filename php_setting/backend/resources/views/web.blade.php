@@ -16,7 +16,9 @@
       <label for="title-form">Title:</label>
       <input type="text" id="title-form"><br>
       <label for="post-form">Post:</label>
-      <input type="text" id="post-form"><br>
+      <input type="text" id="post-form">
+      <label for="file-form">File:</label>
+      <input type="file" id="file-form"><br>
       <label for="search-form">Search:</label>
       <input type="text" id="search-form">
       <label for="id-form">Search.Id:</label>

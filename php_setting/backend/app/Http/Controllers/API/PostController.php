@@ -15,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = Post::orderBy('id','desc')->get();
         return $posts;
     }
 
@@ -25,6 +26,15 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // public function store(Request $request)
+    // {
+    //     $instance = new Post;
+    //     $instance->title = $request->title;
+    //     $instance->post = $request->post;
+    //     $instance->save();
+    //     return response()->json(['result'=>'OK','status'=>200]);
+    // }
+
     public function store(Request $request)
     {
         $instance = new Post;
@@ -33,7 +43,7 @@ class PostController extends Controller
         $instance->save();
         return response()->json(['result'=>'OK','status'=>200]);
     }
-
+    
     /**
      * Display the specified resource.
      *
@@ -48,7 +58,7 @@ class PostController extends Controller
 
     public function search($postValue){
         $posts = Post::where('title', 'like', '%' . $postValue . '%')
-            // ->orderBy('id','desc')
+            ->orderBy('id','desc')
             ->get();
         return response()->json($posts);
     }

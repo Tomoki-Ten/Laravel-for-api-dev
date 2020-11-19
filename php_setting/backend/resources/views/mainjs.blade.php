@@ -9,24 +9,23 @@
   // GET as Loading
   async function getData(){
     const response = await fetch('/api/v1/posts')
-    const data = await response.json();
+    const result = await response.json();
 
-    console.log(data);
+    console.log(result);
 
-    // const getBtn = document.getElementById('get-btn');
-    for(let i=0; i<data.length; i++){
+    for(let i=0; i<result.length; i++){
       const createList = document.createElement('li');
       const createSpan = document.createElement('span');
       const createH3 = document.createElement('h3');
       const createP = document.createElement('p');
-      createSpan.textContent = 'id:' + data[i].id;
-      createH3.textContent = data[i].title;
-      createP.textContent = data[i].post;
+      createSpan.textContent = 'id:' + result[i].id;
+      createH3.textContent = result[i].title;
+      createP.textContent = result[i].post;
       createList.appendChild(createH3);
       createList.appendChild(createSpan);
       createList.appendChild(createP);
-      // listcontainer.appendChild(createList);
-      listcontainer.insertBefore(createList,listcontainer.firstElementChild)
+      listcontainer.appendChild(createList);
+      // listcontainer.insertBefore(createList,listcontainer.firstElementChild)
     };
   }
   getData();
@@ -56,32 +55,59 @@
 
 
   // POST
+  // postBtn.addEventListener('click', ()=> {
+  //   const titleForm = document.getElementById('title-form');
+  //   const titleVal = titleForm.value;
+  //   const postForm = document.getElementById('post-form');
+  //   const postVal = postForm.value;
+    
+  //   const obj = {title: titleVal,post: postVal};
+    
+  //   fetch('/api/v1/posts', {
+  //     method: 'POST',
+  //     headers: {'Content-Type': 'application/json'},
+  //     body: JSON.stringify(obj),
+  //   })
+  //   .then(response => response.json())
+  //   .then(response => {
+  //     console.log('Success:', response);
+  //   })
+  //   .catch((error) => {
+  //     console.error('Error:', error);
+  //   });
+
+  //   titleForm.value = '';
+  //   postForm.value = '';
+
+  //   cleaner();
+  //   setTimeout(getData,100);
+  // });
+
+
+  // POST FILE
+
+  function postFile(){
+  const formData = new FormData();
+  const fileField = document.getElementById('file-form');
+
+  formData.append('title', 'exampleFile');
+  formData.append('post', fileField.files[0]);
+
+  fetch('/api/v1/posts',{
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(result => {
+    console.log('Success:', result)
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+  }
+
   postBtn.addEventListener('click', ()=> {
-    const titleForm = document.getElementById('title-form');
-    const titleVal = titleForm.value;
-    const postForm = document.getElementById('post-form');
-    const postVal = postForm.value;
-    
-    const obj = {title: titleVal,post: postVal};
-    
-    fetch('/api/v1/posts', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(obj),
-    })
-    .then(response => response.json())
-    .then(response => {
-      console.log('Success:', response);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
-
-    titleForm.value = '';
-    postForm.value = '';
-
-    cleaner();
-    setTimeout(getData,100);
+    postFile();
   });
 
 
@@ -171,6 +197,7 @@
   // });
 
 
+  // Search
   async function searchTitle(postValue){
     const response = await fetch('/api/v1/posts/' + postValue);
     const result = await response.json();
@@ -180,15 +207,12 @@
       const createH3 = document.createElement('h3');
       const createSpan = document.createElement('span');
       const createP = document.createElement('p');
-
       createH3.textContent = result[i].title;
-      createSpan.textContent = 'id' + result[i].id;
+      createSpan.textContent = 'id:' + result[i].id;
       createP.textContent = result[i].post;
-
       createList.appendChild(createH3);
       createList.appendChild(createSpan);
       createList.appendChild(createP);
-
       listcontainer.insertBefore(createList,listcontainer.firstElementChild);
     }
   }
