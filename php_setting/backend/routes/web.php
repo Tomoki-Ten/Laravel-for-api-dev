@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',function(){
-    return view('web');
+    return view('imageweb');
 });
 
 //Route::get('/', function () {return view('welcome');});

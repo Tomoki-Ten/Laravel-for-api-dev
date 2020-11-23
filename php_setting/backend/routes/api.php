@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\PostController;
+use App\Http\Controllers\API\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,13 @@ Route::put('/v1/posts/{post}',[PostController::class,'update'])
 ->name('posts.update');
 Route::delete('/v1/posts/{post}',[PostController::class,'destroy'])
 ->name('posts.destroy');
+
+
+
+// Route::apiResource('images',ImageController::class);
+
+Route::get('/v1/images',[ImageController::class,'index'])->name('images.index');
+Route::get('/v1/images/{image}',[ImageController::class,'show'])->name('images.show');
+Route::post('/v1/images',[ImageController::class,'store'])->name('images.store');
+Route::put('/v1/images/{image}',[ImageController::class,'update'])->name('images.update');
+Route::delete('/v1/images/{image}',[ImageController::class,'destroy'])->name('images.destroy');

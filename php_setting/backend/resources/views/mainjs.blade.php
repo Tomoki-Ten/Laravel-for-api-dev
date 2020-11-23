@@ -54,60 +54,33 @@
   // });
 
 
-  // POST
-  // postBtn.addEventListener('click', ()=> {
-  //   const titleForm = document.getElementById('title-form');
-  //   const titleVal = titleForm.value;
-  //   const postForm = document.getElementById('post-form');
-  //   const postVal = postForm.value;
-    
-  //   const obj = {title: titleVal,post: postVal};
-    
-  //   fetch('/api/v1/posts', {
-  //     method: 'POST',
-  //     headers: {'Content-Type': 'application/json'},
-  //     body: JSON.stringify(obj),
-  //   })
-  //   .then(response => response.json())
-  //   .then(response => {
-  //     console.log('Success:', response);
-  //   })
-  //   .catch((error) => {
-  //     console.error('Error:', error);
-  //   });
-
-  //   titleForm.value = '';
-  //   postForm.value = '';
-
-  //   cleaner();
-  //   setTimeout(getData,100);
-  // });
-
-
-  // POST FILE
-
-  function postFile(){
-  const formData = new FormData();
-  const fileField = document.getElementById('file-form');
-
-  formData.append('title', 'exampleFile');
-  formData.append('post', fileField.files[0]);
-
-  fetch('/api/v1/posts',{
-    method: 'POST',
-    body: formData
-  })
-  .then(response => response.json())
-  .then(result => {
-    console.log('Success:', result)
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-  }
-
+  //POST
   postBtn.addEventListener('click', ()=> {
-    postFile();
+    const titleForm = document.getElementById('title-form');
+    const titleVal = titleForm.value;
+    const postForm = document.getElementById('post-form');
+    const postVal = postForm.value;
+    
+    const obj = {title: titleVal,post: postVal};
+    
+    fetch('/api/v1/posts', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(obj),
+    })
+    .then(response => response.json())
+    .then(response => {
+      console.log('Success:', response);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+
+    titleForm.value = '';
+    postForm.value = '';
+
+    cleaner();
+    setTimeout(getData,100);
   });
 
 
